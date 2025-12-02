@@ -17,7 +17,7 @@ export default async function Icon() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          background: 'linear-gradient(135deg, #2563eb 0%, #1e40af 100%)',
+          background: 'white',
         }}
       >
         <div
