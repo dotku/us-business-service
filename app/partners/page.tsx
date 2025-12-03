@@ -21,10 +21,14 @@ export default function Partners() {
             </a>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex gap-4">
-              <a href="/#services" className="text-gray-600 hover:text-gray-800">Services</a>
-              <a href="/partners" className="text-purple-600 font-semibold">Partner Program</a>
-              <a href="/#contact" className="bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700 transition-colors">
+            <div className="hidden md:flex items-center gap-6 lg:gap-8">
+              <a href="/#services" className="text-gray-600 hover:text-gray-800 transition-colors font-medium">
+                Services
+              </a>
+              <a href="/partners" className="text-purple-600 font-semibold hover:text-purple-700 transition-colors">
+                Partner Program
+              </a>
+              <a href="/#contact" className="bg-purple-600 text-white px-6 py-2.5 rounded-full hover:bg-purple-700 transition-colors font-medium">
                 Contact Us
               </a>
             </div>
@@ -62,24 +66,24 @@ export default function Partners() {
 
           {/* Mobile Menu */}
           {mobileMenuOpen && (
-            <div className="md:hidden mt-4 pb-4 space-y-3">
+            <div className="md:hidden mt-4 pb-4 space-y-3 border-t border-gray-100 pt-4">
               <a
                 href="/#services"
-                className="block py-2 text-gray-600 hover:text-gray-800"
+                className="block py-2 px-2 text-gray-600 hover:text-gray-800 hover:bg-gray-50 rounded-lg transition-colors font-medium"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Services
               </a>
               <a
                 href="/partners"
-                className="block py-2 text-purple-600 font-semibold"
+                className="block py-2 px-2 text-purple-600 font-semibold hover:bg-purple-50 rounded-lg transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Partner Program
               </a>
               <a
                 href="/#contact"
-                className="block bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700 transition-colors text-center"
+                className="block bg-purple-600 text-white px-6 py-2.5 rounded-full hover:bg-purple-700 transition-colors text-center font-medium mt-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Contact Us
