@@ -1,51 +1,110 @@
+'use client';
+
 import type { Metadata } from "next";
 import Image from "next/image";
-
-export const metadata: Metadata = {
-  title: "US Business Partner Program - Earn $10K+/Year | 杰圆商务",
-  description: "Join our US business partner matching program. Earn $10,000+ annually through part-time, flexible support. Connect with international clients seeking e-commerce, supply chain, and business expertise. 20% commission + performance bonuses.",
-};
+import { useState } from "react";
 
 export default function Partners() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white">
       {/* Navigation */}
       <nav className="bg-white shadow-sm sticky top-0 z-50">
-        <div className="container mx-auto px-6 py-4">
+        <div className="container mx-auto px-4 sm:px-6 py-4">
           <div className="flex justify-between items-center">
-            <a href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+            <a href="/" className="flex items-center gap-2 sm:gap-3 hover:opacity-80 transition-opacity">
               <div className="bg-white p-1 rounded-full shadow-sm">
-                <Image src="/jytech-logo.png" alt="杰圆商务" width={48} height={48} className="rounded-full" />
+                <Image src="/jytech-logo.png" alt="杰圆商务" width={40} height={40} className="rounded-full sm:w-12 sm:h-12" />
               </div>
-              <span className="text-2xl font-bold text-gray-800">杰圆商务</span>
+              <span className="text-xl sm:text-2xl font-bold text-gray-800">杰圆商务</span>
             </a>
-            <div className="flex gap-4">
+
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex gap-4">
               <a href="/#services" className="text-gray-600 hover:text-gray-800">Services</a>
               <a href="/partners" className="text-purple-600 font-semibold">Partner Program</a>
               <a href="/#contact" className="bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700 transition-colors">
                 Contact Us
               </a>
             </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              className="md:hidden p-2"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              <svg
+                className="w-6 h-6 text-gray-800"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                {mobileMenuOpen ? (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                ) : (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                )}
+              </svg>
+            </button>
           </div>
+
+          {/* Mobile Menu */}
+          {mobileMenuOpen && (
+            <div className="md:hidden mt-4 pb-4 space-y-3">
+              <a
+                href="/#services"
+                className="block py-2 text-gray-600 hover:text-gray-800"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Services
+              </a>
+              <a
+                href="/partners"
+                className="block py-2 text-purple-600 font-semibold"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Partner Program
+              </a>
+              <a
+                href="/#contact"
+                className="block bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700 transition-colors text-center"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Contact Us
+              </a>
+            </div>
+          )}
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="bg-linear-to-r from-purple-600 to-indigo-700 text-white py-20">
-        <div className="container mx-auto px-6">
+      <section className="bg-linear-to-r from-purple-600 to-indigo-700 text-white py-12 sm:py-16 md:py-20">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center justify-center w-24 h-24 bg-white/20 backdrop-blur-sm rounded-full mb-6">
-              <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="inline-flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 bg-white/20 backdrop-blur-sm rounded-full mb-4 sm:mb-6">
+              <svg className="w-10 h-10 sm:w-12 sm:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
               </svg>
             </div>
-            <h1 className="text-5xl font-bold mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 px-4">
               US Business Partner Matching Program
             </h1>
-            <p className="text-2xl mb-4 text-purple-100">
+            <p className="text-lg sm:text-xl md:text-2xl mb-3 sm:mb-4 text-purple-100 px-4">
               Earn $10,000+ per year helping international businesses expand to the US
             </p>
-            <p className="text-lg text-purple-200 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg text-purple-200 max-w-3xl mx-auto px-4">
               Join our exclusive network of US-based business partners and connect with vetted international clients seeking your expertise
             </p>
           </div>
@@ -53,15 +112,15 @@ export default function Partners() {
       </section>
 
       {/* Income Potential Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-6">
+      <section className="py-12 sm:py-16 md:py-20 bg-white">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-800 mb-4">Income Potential</h2>
-              <p className="text-xl text-gray-600">Multiple revenue streams from partnership opportunities</p>
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-3 sm:mb-4">Income Potential</h2>
+              <p className="text-lg sm:text-xl text-gray-600 px-4">Multiple revenue streams from partnership opportunities</p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8 mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-12">
               <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-8 text-center border-2 border-green-200">
                 <div className="text-5xl font-bold text-green-600 mb-2">$10K+</div>
                 <div className="text-gray-700 font-semibold mb-2">Annual Income</div>
@@ -81,9 +140,9 @@ export default function Partners() {
               </div>
             </div>
 
-            <div className="bg-gradient-to-r from-amber-50 to-yellow-50 rounded-2xl p-10 border-2 border-amber-200">
-              <h3 className="text-2xl font-bold text-gray-800 mb-4 text-center">How You Earn</h3>
-              <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-gradient-to-r from-amber-50 to-yellow-50 rounded-2xl p-6 sm:p-8 md:p-10 border-2 border-amber-200">
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 text-center">How You Earn</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <div className="flex items-start">
                   <div className="bg-amber-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-4 shrink-0">1</div>
                   <div>
@@ -119,15 +178,15 @@ export default function Partners() {
       </section>
 
       {/* Program Overview */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-6">
+      <section className="py-12 sm:py-16 md:py-20 bg-gray-50">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-800 mb-4">Why Join Our Partner Network?</h2>
-              <p className="text-xl text-gray-600">Leverage our 20+ years of international e-commerce expertise</p>
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-3 sm:mb-4 px-4">Why Join Our Partner Network?</h2>
+              <p className="text-lg sm:text-xl text-gray-600 px-4">Leverage our 20+ years of international e-commerce expertise</p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
               <div className="bg-white rounded-2xl p-8 shadow-lg">
                 <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
                   <svg className="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -169,15 +228,15 @@ export default function Partners() {
       </section>
 
       {/* Partnership Opportunities */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-6">
+      <section className="py-12 sm:py-16 md:py-20 bg-white">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-800 mb-4">Partnership Opportunities</h2>
-              <p className="text-xl text-gray-600">Diverse sectors and high-growth opportunities</p>
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-3 sm:mb-4 px-4">Partnership Opportunities</h2>
+              <p className="text-lg sm:text-xl text-gray-600 px-4">Diverse sectors and high-growth opportunities</p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
               <div className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl p-6 border-2 border-purple-200">
                 <div className="flex items-start">
                   <svg className="w-6 h-6 text-purple-600 mr-3 shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -255,15 +314,15 @@ export default function Partners() {
       </section>
 
       {/* Basic Responsibilities Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-6">
+      <section className="py-12 sm:py-16 md:py-20 bg-white">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-800 mb-4">Your Role & Responsibilities</h2>
-              <p className="text-xl text-gray-600">Part-time, flexible support with straightforward responsibilities</p>
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-3 sm:mb-4 px-4">Your Role & Responsibilities</h2>
+              <p className="text-lg sm:text-xl text-gray-600 px-4">Part-time, flexible support with straightforward responsibilities</p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-12">
               <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 border-2 border-blue-200">
                 <div className="flex items-center mb-6">
                   <div className="bg-blue-500 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold mr-4 text-xl shrink-0">
@@ -293,9 +352,9 @@ export default function Partners() {
               </div>
             </div>
 
-            <div className="bg-linear-to-r from-purple-50 to-blue-50 rounded-2xl p-10 border-2 border-purple-200">
-              <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">Core Responsibilities</h3>
-              <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-linear-to-r from-purple-50 to-blue-50 rounded-2xl p-6 sm:p-8 md:p-10 border-2 border-purple-200">
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-6 text-center">Core Responsibilities</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <div className="flex items-start bg-white rounded-lg p-5 shadow-sm">
                   <div className="bg-purple-500 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold mr-4 shrink-0">1</div>
                   <div>
@@ -368,16 +427,16 @@ export default function Partners() {
       </section>
 
       {/* Ideal Partner Profile */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
-        <div className="container mx-auto px-6">
+      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-gray-800 mb-4">Who We're Looking For</h2>
-              <p className="text-xl text-gray-600">Ideal partner profile and qualifications</p>
+            <div className="text-center mb-8 sm:mb-12">
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-3 sm:mb-4 px-4">Who We're Looking For</h2>
+              <p className="text-lg sm:text-xl text-gray-600 px-4">Ideal partner profile and qualifications</p>
             </div>
 
-            <div className="bg-white rounded-2xl shadow-xl p-10">
-              <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 md:p-10">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
                 <div>
                   <h3 className="text-xl font-bold text-gray-800 mb-4">Experience & Expertise</h3>
                   <ul className="space-y-3">
@@ -450,28 +509,28 @@ export default function Partners() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-linear-to-r from-purple-600 to-indigo-700 text-white">
-        <div className="container mx-auto px-6 text-center">
+      <section className="py-12 sm:py-16 md:py-20 bg-linear-to-r from-purple-600 to-indigo-700 text-white">
+        <div className="container mx-auto px-4 sm:px-6 text-center">
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-4xl font-bold mb-6">Ready to Join Our Partner Network?</h2>
-            <p className="text-xl mb-8 text-purple-100">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6 px-4">Ready to Join Our Partner Network?</h2>
+            <p className="text-lg sm:text-xl mb-6 sm:mb-8 text-purple-100 px-4">
               Start earning $10,000+ per year by connecting international businesses with US market opportunities
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4">
               <a
                 href="mailto:partners@example.com"
-                className="bg-white text-purple-600 px-10 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-colors shadow-xl"
+                className="w-full sm:w-auto bg-white text-purple-600 px-8 sm:px-10 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg hover:bg-gray-100 transition-colors shadow-xl text-center"
               >
                 Apply Now
               </a>
               <a
                 href="#"
-                className="border-2 border-white text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-purple-600 transition-colors"
+                className="w-full sm:w-auto border-2 border-white text-white px-8 sm:px-10 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg hover:bg-white hover:text-purple-600 transition-colors text-center"
               >
                 Schedule a Call
               </a>
             </div>
-            <p className="mt-8 text-purple-200">
+            <p className="mt-6 sm:mt-8 text-purple-200 px-4 text-sm sm:text-base">
               Questions? Email us at partners@jytech.us or call (415) 851-1937
             </p>
           </div>
@@ -479,33 +538,33 @@ export default function Partners() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-gray-300 py-12">
-        <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-3 gap-8 mb-8">
+      <footer className="bg-gray-900 text-gray-300 py-8 sm:py-12">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-6 sm:mb-8">
             <div>
-              <h4 className="text-xl font-bold text-white mb-4">US Business Services</h4>
-              <p className="text-gray-400">
+              <h4 className="text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4">US Business Services</h4>
+              <p className="text-sm sm:text-base text-gray-400">
                 Connecting international businesses with US market opportunities through strategic partnerships
               </p>
             </div>
             <div>
-              <h4 className="text-lg font-semibold text-white mb-4">Quick Links</h4>
-              <ul className="space-y-2 text-gray-400">
+              <h4 className="text-base sm:text-lg font-semibold text-white mb-3 sm:mb-4">Quick Links</h4>
+              <ul className="space-y-2 text-sm sm:text-base text-gray-400">
                 <li><a href="/" className="hover:text-white">Financial Services</a></li>
                 <li><a href="/partners" className="hover:text-white">Partner Program</a></li>
                 <li><a href="/#contact" className="hover:text-white">Contact Us</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="text-lg font-semibold text-white mb-4">Contact</h4>
-              <ul className="space-y-2 text-gray-400">
+              <h4 className="text-base sm:text-lg font-semibold text-white mb-3 sm:mb-4">Contact</h4>
+              <ul className="space-y-2 text-sm sm:text-base text-gray-400">
                 <li>Partners: partners@jytech.us</li>
                 <li>General: info@jytech.us</li>
                 <li>Phone: (415) 851-1937</li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-gray-800 pt-8 text-center text-gray-500">
+          <div className="border-t border-gray-800 pt-6 sm:pt-8 text-center text-sm sm:text-base text-gray-500">
             <p>&copy; 2024 US Business Services. All rights reserved.</p>
           </div>
         </div>
