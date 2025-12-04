@@ -1,0 +1,1 @@
+Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link`
