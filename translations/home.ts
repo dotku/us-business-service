@@ -43,6 +43,17 @@ export const homeTranslations = {
             "部署与性能优化",
           ],
         },
+        softwareDev: {
+          badge: "软件研发外包",
+          price: "$10K + 30% 股权",
+          unit: "/项目",
+          features: [
+            "全栈软件开发服务",
+            "技术架构设计与实施",
+            "产品开发与迭代",
+            "灵活的合作模式选择",
+          ],
+        },
       },
       monthly: {
         title: "月度维护费用",
@@ -187,7 +198,7 @@ export const homeTranslations = {
       quickLinks: "快速链接",
       services: "服务内容",
       pricing: "价格方案",
-      partners: "US Partner Program",
+      partners: "合伙人项目",
       contact: "联系我们",
       contactInfo: {
         title: "联系我们",
@@ -241,6 +252,17 @@ export const homeTranslations = {
             "Responsive mobile optimization",
             "Basic SEO configuration",
             "Deployment and performance optimization",
+          ],
+        },
+        softwareDev: {
+          badge: "Software Development",
+          price: "$10K + 30% Equity",
+          unit: "/project",
+          features: [
+            "Full-stack software development",
+            "Technical architecture design",
+            "Product development & iteration",
+            "Flexible partnership models",
           ],
         },
       },

@@ -22,7 +22,12 @@ export default function Partners() {
               <div className="bg-white p-1 rounded-full shadow-sm">
                 <Image src="/jytech-logo.png" alt={t.nav.company} width={40} height={40} className="rounded-full sm:w-12 sm:h-12" />
               </div>
-              <span className="text-xl sm:text-2xl font-bold text-gray-800">{t.nav.company}</span>
+              <div className="flex flex-col -space-y-0.5">
+                <span className="text-2xl sm:text-3xl font-bold text-gray-800 leading-tight">{t.nav.company}</span>
+                {language === 'zh' && (
+                  <span className="text-[10px] sm:text-xs text-gray-500 tracking-wide">JY Business Services</span>
+                )}
+              </div>
             </Link>
 
             {/* Desktop Navigation */}

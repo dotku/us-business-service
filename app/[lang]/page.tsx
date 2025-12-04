@@ -31,7 +31,12 @@ export default function Home() {
                   className="rounded-full sm:w-12 sm:h-12"
                 />
               </div>
-              <span className="text-xl sm:text-2xl font-bold">{t.nav.company}</span>
+              <div className="flex flex-col -space-y-0.5">
+                <span className="text-2xl sm:text-3xl font-bold leading-tight">{t.nav.company}</span>
+                {language === 'zh' && (
+                  <span className="text-[10px] sm:text-xs text-blue-100 tracking-wide">JY Business Services</span>
+                )}
+              </div>
             </Link>
 
             {/* Desktop Navigation */}
@@ -155,11 +160,11 @@ export default function Home() {
         </div>
 
         {/* One-time Fees */}
-        <div className="max-w-5xl mx-auto mb-12 sm:mb-16">
+        <div className="max-w-7xl mx-auto mb-12 sm:mb-16">
           <h4 className="text-xl sm:text-2xl font-bold text-gray-700 mb-6 sm:mb-8 text-center px-4">
             {t.pricing.oneTime.title}
           </h4>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {/* Case Fee */}
             <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 border-2 border-blue-100 hover:border-blue-300 transition-colors">
               <div className="text-center">
@@ -207,6 +212,41 @@ export default function Home() {
                 </div>
                 <ul className="text-left space-y-3 text-gray-700 text-sm sm:text-base">
                   {t.pricing.oneTime.landingPage.features.map((feature, index) => (
+                    <li key={index} className="flex items-start">
+                      <svg
+                        className="w-5 h-5 sm:w-6 sm:h-6 text-green-500 mr-2 shrink-0"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M5 13l4 4L19 7"
+                        ></path>
+                      </svg>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Software Development */}
+            <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 border-2 border-purple-100 hover:border-purple-300 transition-colors">
+              <div className="text-center">
+                <div className="inline-block bg-purple-100 text-purple-600 px-4 py-2 rounded-full text-sm font-semibold mb-4">
+                  {t.pricing.oneTime.softwareDev.badge}
+                </div>
+                <div className="mb-6">
+                  <span className="text-3xl sm:text-4xl font-bold text-gray-800">
+                    {t.pricing.oneTime.softwareDev.price}
+                  </span>
+                  <span className="text-gray-600 text-lg sm:text-xl">{t.pricing.oneTime.softwareDev.unit}</span>
+                </div>
+                <ul className="text-left space-y-3 text-gray-700 text-sm sm:text-base">
+                  {t.pricing.oneTime.softwareDev.features.map((feature, index) => (
                     <li key={index} className="flex items-start">
                       <svg
                         className="w-5 h-5 sm:w-6 sm:h-6 text-green-500 mr-2 shrink-0"
