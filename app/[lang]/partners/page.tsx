@@ -18,7 +18,7 @@ export default function Partners() {
       <nav className="bg-white shadow-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 sm:px-6 py-4">
           <div className="flex justify-between items-center">
-            <Link href="/" className="flex items-center gap-2 sm:gap-3 hover:opacity-80 transition-opacity">
+            <Link href={`/${language}`} className="flex items-center gap-2 sm:gap-3 hover:opacity-80 transition-opacity">
               <div className="bg-white p-1 rounded-full shadow-sm">
                 <Image src="/jytech-logo.png" alt={t.nav.company} width={40} height={40} className="rounded-full sm:w-12 sm:h-12" />
               </div>
@@ -28,13 +28,13 @@ export default function Partners() {
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-6 lg:gap-8">
               <LanguageSwitcher />
-              <Link href="/#services" className="text-gray-600 hover:text-gray-800 transition-colors font-medium">
+              <Link href={`/${language}#services`} className="text-gray-600 hover:text-gray-800 transition-colors font-medium">
                 {t.nav.services}
               </Link>
-              <Link href="/partners" className="text-purple-600 font-semibold hover:text-purple-700 transition-colors">
+              <Link href={`/${language}/partners`} className="text-purple-600 font-semibold hover:text-purple-700 transition-colors">
                 {t.nav.partners}
               </Link>
-              <Link href="/#contact" className="bg-purple-600 text-white px-6 py-2.5 rounded-full hover:bg-purple-700 transition-colors font-medium">
+              <Link href={`/${language}#contact`} className="bg-purple-600 text-white px-6 py-2.5 rounded-full hover:bg-purple-700 transition-colors font-medium">
                 {t.nav.contact}
               </Link>
             </div>
@@ -77,21 +77,21 @@ export default function Partners() {
                 <LanguageSwitcher />
               </div>
               <Link
-                href="/#services"
+                href={`/${language}#services`}
                 className="block py-2 px-2 text-gray-600 hover:text-gray-800 hover:bg-gray-50 rounded-lg transition-colors font-medium"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {t.nav.services}
               </Link>
               <Link
-                href="/partners"
+                href={`/${language}/partners`}
                 className="block py-2 px-2 text-purple-600 font-semibold hover:bg-purple-50 rounded-lg transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {t.nav.partners}
               </Link>
               <Link
-                href="/#contact"
+                href={`/${language}#contact`}
                 className="block bg-purple-600 text-white px-6 py-2.5 rounded-full hover:bg-purple-700 transition-colors text-center font-medium mt-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
@@ -417,9 +417,9 @@ export default function Partners() {
             <div>
               <h4 className="text-base sm:text-lg font-semibold text-white mb-3 sm:mb-4">{t.footer.quickLinks}</h4>
               <ul className="space-y-2 text-sm sm:text-base text-gray-400">
-                <li><Link href="/" className="hover:text-white">{t.footer.financialServices}</Link></li>
-                <li><Link href="/partners" className="hover:text-white">{t.footer.partnerProgram}</Link></li>
-                <li><Link href="/#contact" className="hover:text-white">{t.footer.contactUs}</Link></li>
+                <li><Link href={`/${language}`} className="hover:text-white">{t.footer.financialServices}</Link></li>
+                <li><Link href={`/${language}/partners`} className="hover:text-white">{t.footer.partnerProgram}</Link></li>
+                <li><Link href={`/${language}#contact`} className="hover:text-white">{t.footer.contactUs}</Link></li>
               </ul>
             </div>
             <div>

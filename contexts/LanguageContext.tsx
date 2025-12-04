@@ -1,6 +1,7 @@
 'use client';
 
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
 
 type Language = 'zh' | 'en';
 
@@ -12,28 +13,35 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguageState] = useState<Language>('zh');
+export function LanguageProvider({
+  children,
+  lang
+}: {
+  children: React.ReactNode;
+  lang: Language;
+}) {
+  const router = useRouter();
+  const pathname = usePathname();
 
-  useEffect(() => {
-    // Load language preference from localStorage
-    const savedLang = localStorage.getItem('language') as Language;
-    if (savedLang === 'zh' || savedLang === 'en') {
-      setLanguageState(savedLang);
-    }
-  }, []);
+  const setLanguage = (newLang: Language) => {
+    // Get the current path without the language prefix
+    const segments = pathname.split('/').filter(Boolean);
+    const currentLang = segments[0];
 
-  const setLanguage = (lang: Language) => {
-    setLanguageState(lang);
-    localStorage.setItem('language', lang);
+    // Remove current language from path
+    const pathWithoutLang = segments.slice(1).join('/');
+
+    // Navigate to new language path
+    const newPath = `/${newLang}${pathWithoutLang ? `/${pathWithoutLang}` : ''}`;
+    router.push(newPath);
   };
 
   const t = (key: string) => {
-    return key; // This will be implemented when we use translation objects in components
+    return key;
   };
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+    <LanguageContext.Provider value={{ language: lang, setLanguage, t }}>
       {children}
     </LanguageContext.Provider>
   );

@@ -19,7 +19,7 @@ export default function Home() {
         <nav className="container mx-auto px-4 sm:px-6 py-4">
           <div className="flex justify-between items-center">
             <Link
-              href="/"
+              href={`/${language}`}
               className="flex items-center gap-2 sm:gap-3 hover:opacity-80 transition-opacity"
             >
               <div className="bg-white p-1 rounded-full">
@@ -49,7 +49,7 @@ export default function Home() {
                 {t.nav.pricing}
               </Link>
               <Link
-                href="/partners"
+                href={`/${language}/partners`}
                 className="hover:text-blue-200 transition-colors"
               >
                 {t.nav.partners}
@@ -112,7 +112,7 @@ export default function Home() {
                 {t.nav.pricing}
               </Link>
               <Link
-                href="/partners"
+                href={`/${language}/partners`}
                 className="block py-2 hover:text-blue-200 transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
@@ -676,7 +676,7 @@ export default function Home() {
                 </li>
                 <li>
                   <Link
-                    href="/partners"
+                    href={`/${language}/partners`}
                     className="hover:text-white transition-colors"
                   >
                     {t.footer.partners}
